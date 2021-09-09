@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import fetch from 'node-fetch';
 import Downloader from 'nodejs-file-downloader';
 
