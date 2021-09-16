@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 /* eslint-disable no-useless-escape */
 import fetch from 'node-fetch';
 import Downloader from 'nodejs-file-downloader';
@@ -24,9 +25,26 @@ fetch('https://memegen-link-examples-upleveled.netlify.app/')
       (async () => {
         // Wrapping the code with an async function, just for the sake of example.
 
+        const dir = './memes';
+
+        // create new directory
+        try {
+          // first check if directory already exists
+          if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir);
+            console.log('Directory is created.');
+          } else {
+            console.log('Directory already exists.');
+          }
+        } catch (err) {
+          console.log(err);
+        }
+
         const downloader = new Downloader({
           url: espacio[i], // If the file name already exists, a new file with the name 200MB1.zip is created.
+
           directory: './memes', // This folder will be created, if it doesn't exist.
+
           onProgress: function (percentage, chunk, remainingSize) {
             // Gets called with each chunk.
             console.log('% ', percentage);
@@ -34,6 +52,7 @@ fetch('https://memegen-link-examples-upleveled.netlify.app/')
             console.log('Remaining bytes: ', remainingSize);
           },
         });
+
         try {
           await downloader.download(); // Downloader.download() returns a promise.
 
