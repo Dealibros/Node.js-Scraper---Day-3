@@ -1,30 +1,27 @@
 import fs from 'node:fs';
-/* eslint-disable no-useless-escape */
 import fetch from 'node-fetch';
 import Downloader from 'nodejs-file-downloader';
 
-const espacio = [];
+const emptySpace = [];
 
 fetch('https://memegen-link-examples-upleveled.netlify.app/')
   .then((res) => res.text())
   .then((text) => {
-    const urlRegex = /https:[\/][\/]memecomplete((.)+)/gi;
+    const urlRegex = /https:["/"]["/"]memecomplete((.)+)/gi;
     text.replace(urlRegex, function (url) {
-      espacio.push(
+      emptySpace.push(
         url
           .trim()
           .replace(`"`, '')
           .replace(`https://memecomplete.com/edit/`, ''),
       );
     });
-    espacio.length = 10;
-    console.log(espacio);
-    console.log(typeof soloDiez);
+    emptySpace.length = 10;
+    console.log(emptySpace);
+    console.log(typeof onlyTen);
 
     for (let i = 0; i < 10; i++) {
       (async () => {
-        // Wrapping the code with an async function, just for the sake of example.
-
         const dir = './memes';
 
         // create new directory
@@ -41,7 +38,7 @@ fetch('https://memegen-link-examples-upleveled.netlify.app/')
         }
 
         const downloader = new Downloader({
-          url: espacio[i], // If the file name already exists, a new file with the name 200MB1.zip is created.
+          url: emptySpace[i], // If the file name already exists, a new file with the name 200MB1.zip is created.
 
           directory: './memes', // This folder will be created, if it doesn't exist.
 
