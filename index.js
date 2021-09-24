@@ -42,12 +42,12 @@ fetch('https://memegen-link-examples-upleveled.netlify.app/')
 
           directory: './memes', // This folder will be created, if it doesn't exist.
 
-          onProgress: function (percentage, chunk, remainingSize) {
-            // Gets called with each chunk.
-            console.log('% ', percentage);
-            console.log('Current chunk of data: ', chunk);
-            console.log('Remaining bytes: ', remainingSize);
-          },
+          // onProgress: function (percentage, chunk, remainingSize) {
+          //   // Gets called with each chunk.
+          //   console.log('% ', percentage);
+          //   console.log('Current chunk of data: ', chunk);
+          //   console.log('Remaining bytes: ', remainingSize);
+          // },
         });
 
         try {
